@@ -7,12 +7,12 @@ from s3fs import S3FileSystem
 
 def kafka_consumer():
     s3 = S3FileSystem()
-    DIR = ""            # Add S3 bucket location
+    DIR = 's3://ece5984-bucket-owenhiggins/Lab1/stream'            # Add S3 bucket location
     t_end = time.time() + 60 * 1  # Amount of time data is sent for
     while time.time() < t_end:
         consumer = KafkaConsumer(
-            '',  # add Topic name here
-            bootstrap_servers=['<ip>:<prt>'],  # add your IP and port number here
+            'StockData',  # add Topic name here
+            bootstrap_servers=['54.196.246.52:9097'],  # add your IP and port number here
             value_deserializer=lambda x: loads(x.decode('utf-8')))
 
         for count, i in enumerate(consumer):

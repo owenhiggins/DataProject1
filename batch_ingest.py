@@ -9,8 +9,8 @@ import yfinance as yfin
 
 def ingest_data():
     # Choose the ticker variables of the stocks the data of which you want to pull
-    # Here we are getting 4 years of stock market data from Apple, Google and Amazon
-    tickers = ["AAPL", "GOOGL", "AMZN"]
+
+    tickers = ["NVDA", "TSLA", "GME"]
     start_date = '2019-1-1'
     end_date = '2023-1-1'
 
@@ -32,7 +32,7 @@ def ingest_data():
 
     s3 = S3FileSystem()
     # S3 bucket directory
-    DIR = 's3://ece5984-bucket-owenhiggins/Lab1/'                    # insert here
+    DIR = 's3://ece5984-bucket-owenhiggins/Lab1/stream'                    # insert here
     # Push data to S3 bucket as a pickle file
     with s3.open('{}/{}'.format(DIR, 'data.pkl'), 'wb') as f:
         f.write(pickle.dumps(data))
