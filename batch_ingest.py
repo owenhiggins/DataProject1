@@ -32,7 +32,7 @@ def ingest_data():
 
     s3 = S3FileSystem()
     # S3 bucket directory
-    DIR = 's3://ece5984-test-student/lab1'                    # insert here
+    DIR = 's3://ece5984-bucket-owenhiggins/Lab1/'                    # insert here
     # Push data to S3 bucket as a pickle file
     with s3.open('{}/{}'.format(DIR, 'data.pkl'), 'wb') as f:
         f.write(pickle.dumps(data))
